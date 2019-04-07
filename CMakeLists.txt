@@ -13,7 +13,7 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 # Generate executable file.
 add_executable(${PROJECT_NAME}
-  "ip_filter.cpp" "io.cpp" "utils.cpp" "filter.cpp")
+  "main.cpp" "io.cpp" "utils.cpp" "filter.cpp")
 
 # Generate executable tests.
 #add_executable(test_version test_version.cpp)
