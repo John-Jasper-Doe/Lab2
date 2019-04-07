@@ -1,8 +1,8 @@
-#include <cassert>
-#include <cstdlib>
-#include <iostream>
-#include <string>
-#include <vector>
+//#include <cassert>
+//#include <cstdlib>
+//#include <iostream>
+//#include <string>
+//#include <vector>
 
 // ("",  '.') -> [""]
 // ("11", '.') -> ["11"]
@@ -11,31 +11,13 @@
 // (".11", '.') -> ["", "11"]
 // ("11.22", '.') -> ["11", "22"]
 
-#include <tuple>
-#include <algorithm>
+//#include <tuple>
 
 //typedef std::tuple<uint16_t, uint16_t, uint16_t, uint16_t> ipaddr_t;
 
 
 
-template <typename... Args>
-//ip_pool_t filter(const ip_pool_t &ip_pool, Args... args)
-//bool filter(const ipaddr_t &addr, Args... args)
-//{
-//    std::vector<int> a{args...};
-//    static_assert(sizeof...(Args) <= 4, "filter gets 4 parameters max + ip_pool");
 
-////    ip_pool_t ipf;  // filtered
-//    std::vector<uint16_t> vec = to_vector(addr);
-
-////    for (auto ip : ip_pool)
-//    {
-//        if (std::equal(a.begin(), a.end(), vec.begin()))
-//            return true;//ipf.push_back(ip);
-//    }
-
-//    return false;//ipf;
-//}
 
 //bool f_any(const ipaddr_t &addr, uint16_t val)
 //{
@@ -48,6 +30,10 @@ template <typename... Args>
 //}
 
 #include "io.h"
+#include "filter.h"
+#include <algorithm>
+#include <iostream>
+
 
 int main()
 {
@@ -69,6 +55,22 @@ int main()
 
   std::sort(addr_list.begin(), addr_list.end(), std::greater<ipaddr_t>());
   ip_print(addr_list);
+
+  std::cout << "ip = filter(1)" << std::endl;
+  std::vector<ipaddr_t> filtered_list;
+  filtered_list = filter(addr_list, 1);
+  ip_print(filtered_list);
+
+  std::cout << "ip = filter(46, 70)" << std::endl;
+  filtered_list.clear();
+  filtered_list = filter(addr_list, 46, 70);
+  ip_print(filtered_list);
+
+  std::cout << "ip = filter_any(46)" << std::endl;
+  filtered_list.clear();
+  filtered_list = filter_any(addr_list, 46);
+  ip_print(filtered_list);
+
 //  std::cout << "Input:" << std::endl;
 //  for(auto &ip: addr_list) {
 //    std::cout << "[" << std::get<0>(ip) <<

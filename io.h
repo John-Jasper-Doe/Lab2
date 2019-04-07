@@ -1,4 +1,4 @@
-#include "common.h"
+#include "defs.h"
 
 
 bool get_from_stream(std::vector<ipaddr_t> &data);

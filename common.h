@@ -1,12 +1,7 @@
-#include <string>
-#include <vector>
-#include <tuple>
+#include "defs.h"
+
 #include <cassert>
 
-
-using ipaddr_str_t = std::vector<std::string>;
-using ip_liststr_t = std::vector<std::vector<std::string>>;
-using ipaddr_t = std::tuple<uint16_t, uint16_t, uint16_t, uint16_t>;
 
 
 /* index sequence only */
@@ -55,16 +50,16 @@ auto to_vector(const std::tuple<first_type, others...> &t)
 //  return std::make_tuple(static_cast<uint16_t>(v[index])...);
 //}
 
-template <std::size_t... index>
-auto to_tuple_helper(const std::vector<std::string> &v,
-                     index_sequence<index...>)
-{
-  return std::make_tuple(static_cast<uint16_t>(std::stoi(v[index]))...);
-}
+//template <std::size_t... index>
+//auto to_tuple_helper(const std::vector<std::string> &v,
+//                     index_sequence<index...>)
+//{
+//  return std::make_tuple(static_cast<uint16_t>(std::stoi(v[index]))...);
+//}
 
 
-template <std::size_t N = 0>
-auto to_tuple(const std::vector<std::string> &v) {
-  assert(v.size() >= N);
-  return to_tuple_helper(v, make_index_sequence<N>());
-}
+//template <std::size_t N = 0>
+//auto to_tuple(const std::vector<std::string> &v) {
+//  assert(v.size() >= N);
+//  return to_tuple_helper(v, make_index_sequence<N>());
+//}
