@@ -5,8 +5,8 @@ before_script:
 - sudo apt install libboost-test-dev -y
 script:
 - cmake .
-- cmake --build .
-- cmake --build . --target test
+#- cmake --build .
+#- cmake --build . --target test
 - cmake --build . --target package
 deploy:
   provider: script
