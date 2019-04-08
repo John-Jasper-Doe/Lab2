@@ -5,12 +5,11 @@ before_script:
 - sudo apt install libboost-test-dev -y
 script:
 - cmake .
-#- cmake --build .
-#- cmake --build . --target test
+- cmake --build .
 - cmake --build . --target package
 deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ujohn-jasper-doe:$BINTRAY_API_KEY "https://api.bintray.com/content/john-jasper-doe/otus-cpp/ip_filter/$TRAVIS_BUILD_NUMBER/ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ujohn-jasper-doe:$BINTRAY_API_KEY "https://api.bintray.com/content/john-jasper-doe/otus-cpp/homeworks/$TRAVIS_BUILD_NUMBER/ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
 
