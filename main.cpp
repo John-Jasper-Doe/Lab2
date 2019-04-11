@@ -21,17 +21,14 @@ int main()
   ip_print(addr_list);
 
   /* Filtration */
-  std::cout << std::endl;
   std::vector<ipaddr_t> filtered_list;
   filtered_list = filter(addr_list, 1);
   ip_print(filtered_list);
 
-  std::cout << std::endl;
   filtered_list.clear();
   filtered_list = filter(addr_list, 46, 70);
   ip_print(filtered_list);
 
-  std::cout << std::endl;
   filtered_list.clear();
   filtered_list = filter_any(addr_list, 46);
   ip_print(filtered_list);
